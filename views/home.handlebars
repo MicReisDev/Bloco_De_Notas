@@ -1,0 +1,54 @@
+<h1 class="text">
+Suas notas:
+</h1>
+<div class="notas">
+    {{#each posts}}{{!-- estrutura de repetição própria do handlebars, o template recebe como parametro o dados "post" que foi enviado pelo index.js --}}
+      <div class="nota" value="{{updatedAt}} {{titulo}} {{conteudo}}">
+        <div class="nota-cabeca">
+        <h2 >{{updatedAt}} - </h2>  
+        <a href="/deletar/{{id}}" class="delete">X</a>
+        </div>
+        <div class="conteudo">
+          <h1>{{titulo}}</h1>
+          <p>{{conteudo}}</p>
+        </div>
+      </div>
+    {{/each}}
+</div>
+<div class="modal-container">
+  <div class="modal">
+     <h1></h1>
+      <p></p>
+  </div>
+</div>
+<script>
+  const modal = document.querySelector(".modal")
+  const modalCont = document.querySelector(".modal-container")
+  let modalh1 = document.querySelector(".modal h1")
+  let modalp = document.querySelector(".modal p")
+
+
+  const todos = document.querySelectorAll(".nota")
+  todos.forEach((i)=>{i.addEventListener("click",(event)=>{
+
+    
+    console.log(event.currentTarget)
+    modal.innerHTML = event.currentTarget.innerHTML
+
+    modalCont.classList.add("ativo")
+
+  })})
+
+modalCont.addEventListener("click",(event)=>{
+
+  if(event.target == modalCont){
+    modalCont.classList.remove("ativo")
+  }
+})
+
+
+
+
+</script>
+{{!-- O post é um objeto enviado do index.js que tem todos os posts cadastrados no SQL.
+a estrutura each existe no handlebars para fazer um for each na tela--}}
