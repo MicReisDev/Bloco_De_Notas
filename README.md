@@ -5,6 +5,7 @@
 ### Foi utilizada as seguintes tecnologias:
 + NODE
 + MySQL
++ Handlebars
 
 ### Neste site é possível:
 + Criar notas
